@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ahmad hafiz sy — Designer Portfolio</title>
+<meta name="description" content="Portfolio of ahmad hafiz sy, a multidisciplinary designer making digital feel alive.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="loader" id="loader">
+  <div class="loader__lottie" data-lottie="smile:#ffd426"></div>
+  <div class="loader__count"><span id="loadNum">0</span>%</div>
+</div>
+
+<div class="progress" aria-hidden="true"></div>
+<canvas id="trail" aria-hidden="true"></canvas>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+
+<header class="nav">
+  <nav class="nav__left" aria-label="Main">
+    <a class="pill" href="#work">Work</a>
+    <a class="pill" href="#about">About</a>
+    <a class="pill" href="#services">Services</a>
+  </nav>
+  <a class="nav__logo" href="#top" aria-label="Dimas Arka, home">AHMAD HAFIZ<sup>®</sup></a>
+  <div class="nav__right">
+    <a class="btn btn--sm" href="#contact"><span>Let's talk</span></a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="top" data-trail="#0f7d3f">
+  <div class="hero__inner">
+    <h1 class="hero__title" aria-label="Making digital feel alive">
+      <span class="line" aria-hidden="true"><span class="split">VISUALS THAT</span></span>
+      <span class="line" aria-hidden="true"><span class="split">TELL & SELL</span></span>
+    </h1>
+    <p class="hero__sub">A blend of creative design, event photography, and e-commerce execution. Take a look around my work.</p>
+    <a class="btn" href="#work" data-magnetic data-cursor="GO"><span>See my work</span><i>➤</i></a>
+  </div>
+
+  <a class="chip" href="#work" data-depth="0.7" data-cursor="PLAY"><b>▶</b> SHOWREEL</a>
+
+  <div class="sticker sticker--star" data-depth="1.1"><div data-lottie="star:#ff6fd8"></div></div>
+  <div class="sticker sticker--smile" data-depth="-0.8"><div data-lottie="smile:#ff6fd8"></div></div>
+  <div class="sticker sticker--badge" data-depth="0.5" data-cursor="HIRE">
+    <svg viewBox="0 0 160 160" class="spin" aria-hidden="true">
+      <defs><path id="circ" d="M80,80 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0"/></defs>
+      <circle cx="80" cy="80" r="78" fill="#ffd426"/>
+      <text font-family="Anton" font-size="17" letter-spacing="2" fill="#06532a"><textPath href="#circ" textLength="355">OPEN FOR WORK • BOOKING 2026 • </textPath></text>
+    </svg>
+    <span class="badge__arrow">↗</span>
+  </div>
+  <div class="pixels" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="about" data-trail="#7f99ff">
+  <div class="story__inner">
+    <h2 class="story__title" aria-label="Crafting visuals and capturing moments">
+      <span class="row" aria-hidden="true"><span class="mw"><span class="mi">CRAFTING</span></span> <span class="mw"><span class="mi">VISUALS</span></span></span>
+      <span class="row" aria-hidden="true"><span class="mw"><span class="mi">&amp;</span></span> <span class="mw"><span class="mi">CAPTURING</span></span> <span class="paren">(</span><span class="bubble">DESIGN + PHOTOGRAPHY</span><span class="paren">)</span></span>
+      <span class="row" aria-hidden="true"><span class="mw"><span class="mi">MOMENTS</span></span></span>
+    </h2>
+    <div class="sticker sticker--bag" data-depth="0.9"><div data-lottie="star:#ffd426"></div></div>
+
+    <div class="story__body">
+      <p class="story__lead" data-scrub>Hi, I'm Ahmad Hafiz Syahbandani, a fresh vocational school (SMK) graduate based in Bogor. Learning by doing in design, event photography, and e-commerce—turning a gap year into a journey of building and managing an independent online business.</p>
+      <ul class="stats">
+        <li><b data-count="8">0</b><span>years designing</span></li>
+        <li><b data-count="120">0</b><span>projects shipped</span></li>
+        <li><b data-count="34">0</b><span>happy clients</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SCENE -->
+<section class="scene" aria-hidden="true">
+  <div class="scene__inner">
+    <div class="sc sc-bg"></div>
+    <div class="sc sc-door"><span></span></div>
+    <div class="sc sc-col sc-col--l"></div>
+    <div class="sc sc-col sc-col--r"></div>
+    <div class="sc sc-sign">PIXEL HALL</div>
+    <div class="sc sc-fore sc-fore--l"></div>
+    <div class="sc sc-fore sc-fore--r"></div>
+  </div>
+  <canvas id="pixelReveal"></canvas>
+</section>
+
+<!-- WORK -->
+<section class="work" id="work" data-trail="#0f7d3f">
+  <div class="work__inner">
+    <div class="work__head">
+      <h2>SELECTED<br>WORK</h2>
+      <p>Four skills, four galleries. Pick a card to see the work.</p>
+    </div>
+    <div class="cards">
+      <article class="card-wrap" data-r="-7" data-y="0">
+        <a class="card" href="work.html?c=photography" data-cursor="OPEN">
+          <div class="card__art has-photo"><img src="images/foto 1.jpg" alt="Photography work"><span class="tag">01</span><h3 class="card__title">Photography</h3></div>
+          <p class="card__desc">Events, products and people, captured in the moment.</p>
+        </a>
+      </article>
+      <article class="card-wrap" data-r="2.5" data-y="-40">
+        <a class="card" href="work.html?c=branding" data-cursor="OPEN">
+          <div class="card__art a2"><span class="tag">02</span><h3 class="card__title">Branding</h3></div>
+          <p class="card__desc">Logos, identity systems and the visuals that hold a brand together.</p>
+        </a>
+      </article>
+      <article class="card-wrap" data-r="-1.5" data-y="20">
+        <a class="card" href="work.html?c=editorial" data-cursor="OPEN">
+          <div class="card__art a4"><span class="tag">03</span><h3 class="card__title">Editorial</h3></div>
+          <p class="card__desc">Posters, feeds, catalogues and layouts built around type.</p>
+        </a>
+      </article>
+      <article class="card-wrap" data-r="6" data-y="-20">
+        <a class="card" href="work.html?c=website" data-cursor="OPEN">
+          <div class="card__art a3"><span class="tag">04</span><h3 class="card__title">Website</h3></div>
+          <p class="card__desc">Landing pages and online stores designed to sell.</p>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services" data-trail="#e8b800">
+  <div class="marquee__row" data-dir="1">
+    <div class="marquee__inner"><div class="marquee__set"><span>UI DESIGN</span><em>✺</em><span>BRANDING</span><em>✺</em><span>MOTION</span><em>✺</em><span>3D</span><em>✺</em><span>WEBFLOW</span><em>✺</em></div></div>
+  </div>
+  <div class="marquee__row marquee__row--outline" data-dir="-1">
+    <div class="marquee__inner"><div class="marquee__set"><span>photoghraphy</span><em>✺</em><span>ILLUSTRATION</span><em>✺</em><span>LOTTIE</span><em>✺</em><span>DESIGN SYSTEMS</span><em>✺</em></div></div>
+  </div>
+</section>
+
+</main>
+
+<!-- CONTACT -->
+<footer class="contact" id="contact" data-trail="#ff9de6">
+  <div class="contact__inner">
+    <h2 class="contact__title" aria-label="Let's make it pop"><span class="line" aria-hidden="true"><span class="split">LET'S MAKE</span></span><span class="line" aria-hidden="true"><span class="split">IT POP</span></span></h2>
+    <div class="contact__cta">
+      <a class="btn btn--lg" href="https://ig.me/m/ahmdhafizsy" target="_blank" rel="noopener" data-magnetic data-cursor="DM"><span>DM me on Instagram</span><i>➤</i></a>
+    </div>
+    <div class="sticker sticker--smile2" data-depth="-0.8"><div data-lottie="smile:#ffd426"></div></div>
+    <div class="contact__meta">
+      <div class="socials">
+        <a href="#" data-magnetic>Instagram</a>
+        <a href="#" data-magnetic>Dribbble</a>
+        <a href="#" data-magnetic>Behance</a>
+        <a href="#" data-magnetic>LinkedIn</a>
+      </div>
+      <p>Bogor <b id="clock">--:--</b> · © 2026 Ahmad Hafiz Sy</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

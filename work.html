@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Work — Ahmad Hafiz Sy</title>
+<meta name="description" content="Portfolio gallery of Ahmad Hafiz Sy: photography, branding, editorial and website work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="loader" id="loader">
+  <div class="loader__lottie" data-lottie="smile:#ffd426"></div>
+  <div class="loader__count"><span id="loadNum">0</span>%</div>
+</div>
+
+<div class="progress" aria-hidden="true"></div>
+<canvas id="trail" aria-hidden="true"></canvas>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+
+<header class="nav">
+  <nav class="nav__left" aria-label="Main">
+    <a class="pill" href="index.html#work">Work</a>
+    <a class="pill" href="index.html#about">About</a>
+    <a class="pill" href="index.html#services">Services</a>
+  </nav>
+  <a class="nav__logo" href="index.html" aria-label="Ahmad Hafiz, home">AHMAD HAFIZ<sup>®</sup></a>
+  <div class="nav__right">
+    <a class="btn btn--sm" href="#contact"><span>Let's talk</span></a>
+  </div>
+</header>
+
+<main>
+
+<!-- CATEGORY HERO -->
+<section class="hero hero--cat" id="top" data-trail="#0f7d3f">
+  <div class="hero__inner">
+    <p class="cat__eyebrow" id="catNum">01 / 04</p>
+    <h1 class="hero__title" id="catTitle"><span class="line" aria-hidden="true"><span class="split" id="catSplit">PHOTOGRAPHY</span></span></h1>
+    <p class="hero__sub" id="catDesc"></p>
+    <a class="btn" href="index.html#work" data-magnetic data-cursor="BACK"><span>All work</span><i>↩</i></a>
+  </div>
+  <div class="sticker sticker--star" data-depth="1.1"><div data-lottie="star:#ff6fd8"></div></div>
+  <div class="sticker sticker--smile" data-depth="-0.8"><div data-lottie="smile:#ff6fd8"></div></div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" data-trail="#e2dccb">
+  <div class="gallery__inner">
+    <div class="shots" id="shots"></div>
+    <p class="gallery__empty" id="empty" hidden>New work is on the way. Check back soon.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- CONTACT -->
+<footer class="contact" id="contact" data-trail="#ff9de6">
+  <div class="contact__inner">
+    <h2 class="contact__title" aria-label="Let's make it pop"><span class="line" aria-hidden="true"><span class="split">LET'S MAKE</span></span><span class="line" aria-hidden="true"><span class="split">IT POP</span></span></h2>
+    <div class="contact__cta">
+      <a class="btn btn--lg" href="https://ig.me/m/ahmdhafizsy" target="_blank" rel="noopener" data-magnetic data-cursor="DM"><span>DM me on Instagram</span><i>➤</i></a>
+    </div>
+    <div class="sticker sticker--smile2" data-depth="-0.8"><div data-lottie="smile:#ffd426"></div></div>
+    <div class="contact__meta">
+      <div class="socials">
+        <a href="#" data-magnetic>Instagram</a>
+        <a href="#" data-magnetic>Dribbble</a>
+        <a href="#" data-magnetic>Behance</a>
+        <a href="#" data-magnetic>LinkedIn</a>
+      </div>
+      <p>Bogor <b id="clock">--:--</b> · © 2026 Ahmad Hafiz Sy</p>
+    </div>
+  </div>
+</footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Work preview">
+  <button class="lightbox__close" type="button" aria-label="Close">✕</button>
+  <img alt="">
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+/* Isi galeri diambil dari content/<kategori>.json (diatur lewat dashboard Pages CMS).
+   main.js baru dimuat setelah judul terisi, karena main.js memecah judul jadi huruf. */
+(() => {
+  const KEYS = ['photography', 'branding', 'editorial', 'website'];
+  const param = new URLSearchParams(location.search).get('c');
+  const key = KEYS.includes(param) ? param : KEYS[0];
+  const $id = id => document.getElementById(id);
+  const shots = $id('shots');
+  const dlg = $id('lightbox');
+  const big = dlg.querySelector('img');
+  dlg.addEventListener('click', () => dlg.close());
+
+  let refreshTimer;
+  const refreshSoon = () => {
+    clearTimeout(refreshTimer);
+    refreshTimer = setTimeout(() => window.ScrollTrigger && ScrollTrigger.refresh(), 200);
+  };
+
+  const render = data => {
+    const title = String(data.title || key).toUpperCase();
+    document.title = title.charAt(0) + title.slice(1).toLowerCase() + ' — Ahmad Hafiz Sy';
+    $id('catSplit').textContent = title;
+    $id('catTitle').setAttribute('aria-label', title);
+    $id('catDesc').textContent = data.desc || '';
+    $id('catNum').textContent = String(KEYS.indexOf(key) + 1).padStart(2, '0') + ' / 0' + KEYS.length;
+
+    const photos = (Array.isArray(data.photos) ? data.photos : []).filter(p => p && p.image);
+    photos.forEach((p, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'shot';
+      b.dataset.cursor = 'VIEW';
+      const img = document.createElement('img');
+      img.src = p.image;
+      img.alt = p.caption || title.toLowerCase() + ' work ' + (i + 1);
+      img.loading = i < 6 ? 'eager' : 'lazy';
+      img.addEventListener('load', refreshSoon);
+      b.append(img);
+      if (p.caption) {
+        const cap = document.createElement('span');
+        cap.className = 'shot__cap';
+        cap.textContent = p.caption;
+        b.append(cap);
+      }
+      b.addEventListener('click', () => { big.src = p.image; big.alt = img.alt; dlg.showModal(); });
+      shots.append(b);
+      requestAnimationFrame(() => requestAnimationFrame(() => b.classList.add('is-in')));
+    });
+    $id('empty').hidden = photos.length > 0;
+  };
+
+  fetch('content/' + key + '.json', { cache: 'no-cache' })
+    .then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))
+    .then(render)
+    .catch(err => { console.error('Gallery data failed to load:', err); $id('empty').hidden = false; })
+    .finally(() => {
+      const s = document.createElement('script');
+      s.src = 'main.js';
+      document.body.append(s);
+    });
+})();
+</script>
+</body>
+</html>
