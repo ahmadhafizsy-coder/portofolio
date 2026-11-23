@@ -1,0 +1,139 @@
+media:
+  input: images
+  output: /images
+  rename: safe
+  categories: [image]
+
+content:
+  - name: photography
+    label: Photography
+    type: file
+    path: content/photography.json
+    fields:
+      - name: title
+        label: Judul halaman
+        type: string
+        options:
+          maxlength: 40
+      - name: desc
+        label: Keterangan singkat
+        type: text
+        options:
+          maxlength: 200
+      - name: photos
+        label: Foto portofolio
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{caption} ({index})"
+        fields:
+          - name: image
+            label: Foto
+            type: image
+            options:
+              path: images/photography
+          - name: caption
+            label: Keterangan foto (boleh kosong)
+            type: string
+            options:
+              maxlength: 120
+  - name: branding
+    label: Branding
+    type: file
+    path: content/branding.json
+    fields:
+      - name: title
+        label: Judul halaman
+        type: string
+        options:
+          maxlength: 40
+      - name: desc
+        label: Keterangan singkat
+        type: text
+        options:
+          maxlength: 200
+      - name: photos
+        label: Foto portofolio
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{caption} ({index})"
+        fields:
+          - name: image
+            label: Foto
+            type: image
+            options:
+              path: images/branding
+          - name: caption
+            label: Keterangan foto (boleh kosong)
+            type: string
+            options:
+              maxlength: 120
+  - name: editorial
+    label: Editorial
+    type: file
+    path: content/editorial.json
+    fields:
+      - name: title
+        label: Judul halaman
+        type: string
+        options:
+          maxlength: 40
+      - name: desc
+        label: Keterangan singkat
+        type: text
+        options:
+          maxlength: 200
+      - name: photos
+        label: Foto portofolio
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{caption} ({index})"
+        fields:
+          - name: image
+            label: Foto
+            type: image
+            options:
+              path: images/editorial
+          - name: caption
+            label: Keterangan foto (boleh kosong)
+            type: string
+            options:
+              maxlength: 120
+  - name: website
+    label: Website
+    type: file
+    path: content/website.json
+    fields:
+      - name: title
+        label: Judul halaman
+        type: string
+        options:
+          maxlength: 40
+      - name: desc
+        label: Keterangan singkat
+        type: text
+        options:
+          maxlength: 200
+      - name: photos
+        label: Foto portofolio
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{caption} ({index})"
+        fields:
+          - name: image
+            label: Foto
+            type: image
+            options:
+              path: images/website
+          - name: caption
+            label: Keterangan foto (boleh kosong)
+            type: string
+            options:
+              maxlength: 120
