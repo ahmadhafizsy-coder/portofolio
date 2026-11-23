@@ -3,8 +3,19 @@
   "desc": "Events, products and people, captured in the moment.",
   "photos": [
     {
-      "image": "/images/photography/1.jpg",
-      "caption": ""
-    }
+      "image": "/images/photography/1.jpg"
+    },
+    {
+      "image": "/images/photography/attimo-x-a-and-t-2026-08-16-960.jpeg"
+    },
+    {
+      "image": "/images/photography/attimo-x-a-and-t-2026-08-16-707.jpg"
+    },
+    {
+      "image": "/images/photography/attimo-x-a-and-t-2026-08-16-1512.jpg"
+    },
+    {},
+    {},
+    {}
   ]
 }
